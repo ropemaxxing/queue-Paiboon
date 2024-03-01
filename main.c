@@ -8,18 +8,6 @@
 int main(int argc , char **argv) {
   NodePtr headPtr=NULL;
   NodePtr tailPtr=NULL;
-  /*enqueue(&headPtr, &tailPtr, 5);
-  printf("%d\n",dequeue(&headPtr, &tailPtr));
-  enqueue(&headPtr, &tailPtr, 9);
-  printf("%d\n",dequeue(&headPtr, &tailPtr));
-  enqueue(&headPtr, &tailPtr, 7);
-  printf("%d\n",dequeue(&headPtr, &tailPtr));
-  enqueue(&headPtr, &tailPtr, 8);
-  printf("%d\n",dequeue(&headPtr, &tailPtr));
-  enqueue(&headPtr, &tailPtr, 2);
-  printf("%d\n",dequeue(&headPtr, &tailPtr));*/
-
-//5 x 9 x 7 x 8 2 x
 
 //For struct Queue
   Queue  q;
@@ -29,26 +17,19 @@ int main(int argc , char **argv) {
 
    int i,x;
 
-   /*enqueue_struct(&q,7);
-   printf("%d\n",dequeue_struct(&q));
-   enqueue_struct(&q,8);
-   printf("%d\n",dequeue_struct(&q));*/
-
-  
-
  for(i=1;i<argc;i++){
         if(strcmp(argv[i],"x")==0){
-          if(q.size>0){
+          if(q.size>=1){
             x=dequeue_struct(&q);
-            printf("dequeing %d\n",x);
           }
           else printf("Empty queue\n");
         }
         else {
-       enqueue_struct(&q, atoi(argv[i]));
-           
+          enqueue_struct(&q, atoi(argv[i]),atoi(argv[i+1]));
+          i++;
         }
  }
- 
+ printf("====================\n");
+ if(q.size!=0)printf("There are %d people left in the queue\n",q.size);
   return 0;
 }
